@@ -1,0 +1,20 @@
+{
+  "name": "deployed-project-1",
+  "version": "1.0.0",
+  "description": "Ecommerce App",
+  "homepage": "https://github.com/Aravcode2005/E-Commerce-Full-Stack-Application#readme",
+  "bugs": {
+    "url": "https://github.com/Aravcode2005/E-Commerce-Full-Stack-Application/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aravcode2005/E-Commerce-Full-Stack-Application.git"
+  },
+  "license": "ISC",
+  "author": "Arav Gupta",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
