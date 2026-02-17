@@ -1,49 +1,57 @@
-const fs = require('fs');
-const path = require('path');
+const mongodb=require('mongodb').getDb;
 
-const p = path.join(
-  path.dirname(process.mainModule.filename),
-  'data',
-  'products.json'
-);
+class Product{
 
-const getProductsFromFile = cb => {
-  fs.readFile(p, (err, fileContent) => {
-    if (err) {
-      cb([]);
-    } else {
-      cb(JSON.parse(fileContent));
+constructor(title,price,description,imageUrl,id){
+this.title=title;
+this.price=price;
+this.description=description;
+this.imageUrl=imageUrl;
+this._id=id;
+}
+save(){
+    const db=getDb();
+   let dbOp;
+    if(this._id){
+      dbOp=db.collection('products').updateOne({});
+
     }
-  });
-};
 
-module.exports = class Product {
-  constructor(title, imageUrl, description, price) {
-    this.title = title;
-    this.imageUrl = imageUrl;
-    this.description = description;
-    this.price = price;
-  }
 
-  save() {
-    this.id=Math.random().toString();
-    getProductsFromFile(products => {
-      products.push(this);
-      fs.writeFile(p, JSON.stringify(products), err => {
-        console.log(err);
-      });
+    else{
+
+    dpOp=db.collection('products').insertOne(this);
+
+    }
+
+    return dpOp
+    .then(result =>{
+        console.log(result);
+    })
+    .catch(err =>{
+       console.log(err);
     });
-  }
+}
+static fetchAll(){
+    return db.collection('products').
+    find().
+    toArray().
+    then(products =>{
+    console.log(products);
+    return products;
+    })
+    .catch(err =>{
+    console.log(err);
+    });
+}
 
-  static fetchAll(cb) {
-    getProductsFromFile(cb);
-  }
-  static findbyid(id,cb){
-   getProductsFromFile(products=>{
 
-     const product=products.find(p=>p.id===id);
-     cb(product);
-   });
+static deleteById(prodId){
 
-  }
-};
+const db=getDb();
+
+return db.collection('products').deleteOne({_id:new mongodb.ObjectId(prodId)}).then();
+}
+
+}
+module.exports=Product;
