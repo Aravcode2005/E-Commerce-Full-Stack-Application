@@ -14,18 +14,34 @@
     "nodemon": "^1.18.3"
   },
   "dependencies": {
+    "bcryptjs": "^3.0.3",
     "body-parser": "^1.18.3",
     "connect-mongodb-session": "^5.0.0",
+    "crypto": "^1.0.1",
+    "csurf": "^1.11.0",
     "dotenv": "^17.3.1",
     "ejs": "^2.6.1",
     "express": "^4.22.1",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.19.0",
+    "express-validator": "^7.3.2",
     "mongodb": "^3.1.6",
     "mongoose": "^5.13.23",
     "mysql2": "^1.6.1",
+    "nodemailer": "^8.0.4",
+    "nodemailer-sendgrid-transport": "^0.2.0",
     "pug": "^2.0.3",
     "sequelize": "^5.0.0-beta.11",
     "session": "^0.1.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aravcode2005/E-Commerce-Full-Stack-Application.git"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Aravcode2005/E-Commerce-Full-Stack-Application/issues"
+  },
+  "homepage": "https://github.com/Aravcode2005/E-Commerce-Full-Stack-Application#readme"
 }
